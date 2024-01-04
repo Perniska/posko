@@ -4,7 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/tmp/tmp.IM2F2H3mNA/client.c" "/tmp/tmp.IM2F2H3mNA/cmake-build-debug/CMakeFiles/client.dir/client.c.o"
+  "/tmp/tmp.baNCNu1QWG/Board.c" "/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles/client.dir/Board.c.o"
+  "/tmp/tmp.baNCNu1QWG/Food.c" "/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles/client.dir/Food.c.o"
+  "/tmp/tmp.baNCNu1QWG/Game.c" "/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles/client.dir/Game.c.o"
+  "/tmp/tmp.baNCNu1QWG/Position.c" "/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles/client.dir/Position.c.o"
+  "/tmp/tmp.baNCNu1QWG/Snake.c" "/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles/client.dir/Snake.c.o"
+  "/tmp/tmp.baNCNu1QWG/client.c" "/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles/client.dir/client.c.o"
+  "/tmp/tmp.baNCNu1QWG/hra.c" "/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles/client.dir/hra.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
