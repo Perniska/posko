@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include "hra.h"
 
 int main(int argc, char *argv[])
 {
@@ -55,6 +56,8 @@ int main(int argc, char *argv[])
         return 4;
     }
     printf("Here is the message: %s\n", buffer);
+
+
 
     const char* msg = "I got your message";
     n = write(newsockfd, msg, strlen(msg)+1);

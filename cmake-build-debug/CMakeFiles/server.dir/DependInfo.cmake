@@ -4,7 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/tmp/tmp.IM2F2H3mNA/server.c" "/tmp/tmp.IM2F2H3mNA/cmake-build-debug/CMakeFiles/server.dir/server.c.o"
+  "/tmp/tmp.kld56GFG1D/Board.c" "/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles/server.dir/Board.c.o"
+  "/tmp/tmp.kld56GFG1D/Food.c" "/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles/server.dir/Food.c.o"
+  "/tmp/tmp.kld56GFG1D/Game.c" "/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles/server.dir/Game.c.o"
+  "/tmp/tmp.kld56GFG1D/Position.c" "/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles/server.dir/Position.c.o"
+  "/tmp/tmp.kld56GFG1D/Snake.c" "/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles/server.dir/Snake.c.o"
+  "/tmp/tmp.kld56GFG1D/hra.c" "/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles/server.dir/hra.c.o"
+  "/tmp/tmp.kld56GFG1D/server.c" "/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles/server.dir/server.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
