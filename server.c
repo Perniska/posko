@@ -8,6 +8,7 @@
 
 int main(int argc, char *argv[])
 {
+
     int sockfd, newsockfd;
     socklen_t cli_len;
     struct sockaddr_in serv_addr, cli_addr;
@@ -59,16 +60,32 @@ int main(int argc, char *argv[])
         perror("ERROR on accept");
         return 3;
     }
+
+    char username[256];
+    bzero(username, sizeof(username));
+    int nn = read(newsockfd, username, sizeof(username)-1);
+    if (nn < 0) {
+        perror("Error reading username from socket");
+        return 4;
+    }
+
+// Print the username
+    printf("Client connected with username: %s\n", username);
+    hra();
     //vynulovany buffer
     bzero(buffer,256);
     //precitam a ulozim informcie do buffra - max 255 bajtov
     n = read(newsockfd, buffer, 255);
+
+
+
     //bajtov nesmie byt menej ako 1
     if (n < 0)
     {
         perror("Error reading from socket");
         return 4;
     }
+
     printf("Here is the message: %s\n", buffer);
 
 
@@ -81,6 +98,8 @@ int main(int argc, char *argv[])
         perror("Error writing to socket");
         return 5;
     }
+
+
     //ukoncenie komunikacie
     close(newsockfd);
     close(sockfd);

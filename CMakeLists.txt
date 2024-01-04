@@ -15,7 +15,8 @@ add_executable(client client.c hra.c
         Food.c
         Direction.h
         Board.h
-        Board.c)
+        Board.c
+)
 add_executable(server server.c hra.c
         Game.h
         Game.c
@@ -27,4 +28,5 @@ add_executable(server server.c hra.c
         Food.c
         Direction.h
         Board.h
-        Board.c)
+        Board.c
+)
