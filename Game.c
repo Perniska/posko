@@ -12,6 +12,7 @@ void initializeGame(Game* game, int width, int height) {
     int initialX = 0;
     int initialY = 0;
     game->snake = createSnakeWithPosition(initialX, initialY);
+    game->score = 0;
 
 }
 
@@ -22,12 +23,17 @@ void runGame(Game* game) {
     updateSnakePosition(&(game->board), getSnakeBody(&(game->snake)), game->snake.length);
     updateFoodPosition(&(game->board), &(game->food.position));
 
+    printf("Score: %d\n", game->score);
     drawBoard(&(game->board));
 
     while (1) {
         // Aktualizujte smer hada na základe vstupu od používateľa
         char key;
         scanf(" %c", &key);
+        if(key == 'q' || key == 'Q') {
+            printf("Game Over!\n");
+            break;
+        }
         updateDirection(&(game->snake), key);
 
         // Posun hada
@@ -44,8 +50,13 @@ void runGame(Game* game) {
             getSnakePosition(&(game->snake)).y == game->food.position.y) {
             growSnake(&(game->snake));
             generateNewFoodPosition(&(game->food), game->board.width, game->board.height);
+            game->score++;
         }
 
+        if(game->score == 10) {
+            printf("Congratulations, you win");
+            break;
+        }
         // Vyčistinie hracej plochy (staré pozicie hracich objektov sa vymazu z plochy)
         clearBoard(&(game->board));
 
@@ -56,7 +67,10 @@ void runGame(Game* game) {
         updateFoodPosition(&(game->board), &(game->food.position));
 
         // Vykresli sa nová hracia plocha
+        printf("Score: %d\n", game->score);
         drawBoard(&(game->board));
     }
+    destroySnake(&(game->snake));
+    destroyBoard(&(game->board));
 }
 

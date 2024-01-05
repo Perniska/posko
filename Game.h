@@ -10,6 +10,7 @@ typedef struct {
     Board board;
     Snake snake;
     Food food;
+    int score;
 } Game;
 
 void initializeGame(Game* game, int width, int height);

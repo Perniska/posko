@@ -72,3 +72,17 @@ int getBoardWidth(const Board* board) {
 int getBoardHeight(const Board* board) {
     return board->height;
 }
+
+void destroyBoard(Board* board) {
+    // Uvoľnenie pamäte pre každý riadok matice
+    for (int i = 0; i < board->height; ++i) {
+        free(board->grid[i]);
+    }
+
+    // Uvoľnenie pamäte pre pole riadkov
+    free(board->grid);
+
+    // Nastavenie veľkostí na 0, aby sme mohli ľahko identifikovať uvoľnenú dosku
+    board->width = 0;
+    board->height = 0;
+}
