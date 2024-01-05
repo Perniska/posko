@@ -22,7 +22,6 @@ void growSnake(Snake* snake);
 int checkCollision(const Snake* snake);
 void updateDirection(Snake* snake, char key);
 Position getSnakePosition(const Snake* snake);
-//void setSnakeBody(Snake* snake, Position* setedBody, int length);
 Position* getSnakeBody(const Snake* snake);
 void destroySnake(Snake* snake);
 

@@ -138,19 +138,6 @@ Position getSnakePosition(const Snake* snake) {
     return snake->body[0];
 }
 
-void setSnakeBody(Snake* snake, Position* setedBody, int length) {
-    snake->length = length;
-    snake->body = realloc(snake->body, snake->length * sizeof(Position));
-    if (snake->body == NULL) {
-        // Handle memory allocation error
-        exit(EXIT_FAILURE);
-    }
-
-    for (int i = 0; i < length; ++i) {
-        snake->body[i] = setedBody[i];
-    }
-}
-
 Position* getSnakeBody(const Snake* snake) {
     return snake->body;
 }
