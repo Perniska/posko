@@ -18,5 +18,7 @@ void updateSnakePosition(Board* board, const Position* snakeBody, int snakeLengt
 void updateFoodPosition(Board* board, const Position* foodPosition);
 int getBoardWidth(const Board* board);
 int getBoardHeight(const Board* board);
+void destroyBoard(Board* board);
+
 
 #endif // BOARD_H

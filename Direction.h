@@ -6,8 +6,7 @@ typedef enum {
     UP,
     DOWN,
     RIGHT,
-    LEFT,
-    INVALID // Neplatný smer
+    LEFT
 } Direction;
 
 #endif // DIRECTION_H
