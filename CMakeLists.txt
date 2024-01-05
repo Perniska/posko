@@ -30,3 +30,5 @@ add_executable(server server.c hra.c
         Board.h
         Board.c
 )
+
+target_link_libraries(server pthread)
