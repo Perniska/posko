@@ -9,13 +9,13 @@ Board createBoard(int width, int height) {
     board.width = width;
     board.height = height;
 
-    // Allocate memory for the grid
+    // Alokuje sa pamat pre hraciu plochu
     board.grid = (char**)malloc(height * sizeof(char*));
     for (i = 0; i < height; ++i) {
         board.grid[i] = (char*)malloc(width * sizeof(char));
     }
 
-    // Initialize the grid with '.'
+    // na celej hracej ploche sa nastavia . ako reprezentacia plocka
     for (i = 0; i < height; ++i) {
         for (j = 0; j < width; ++j) {
             board.grid[i][j] = '.';
@@ -37,6 +37,7 @@ void drawBoard(const Board* board) {
 
 void clearBoard(Board* board) {
     int i, j;
+    //vycistenie hracej plochy, vymazanie znakov hadika a jedla z matice plochy
     for (i = 0; i < board->height; ++i) {
         for (j = 0; j < board->width; ++j) {
             board->grid[i][j] = '.';
@@ -47,10 +48,10 @@ void clearBoard(Board* board) {
 void updateSnakePosition(Board* board, const Position* snakeBody, int snakeLength) {
     int i, x, y;
 
-    // Clear the matrix for the new snake position
+    // vycistenie hracej plochy
     clearBoard(board);
 
-    // Update the matrix with the new snake position
+    // Updatovanie matice hracej plochy s aktualnou polohou hadika
     for (i = 0; i < snakeLength; ++i) {
         x = getPositionX(&snakeBody[i]) % board->width;
         y = getPositionY(&snakeBody[i]) % board->height;
@@ -64,7 +65,7 @@ void updateSnakePosition(Board* board, const Position* snakeBody, int snakeLengt
 }
 
 void updateFoodPosition(Board* board, const Position* foodPosition) {
-    // Update the position of the food in the matrix
+    // update polohy jedla na hracej ploche
     int x = getPositionX(foodPosition) % board->width;
     int y = getPositionY(foodPosition) % board->height;
     board->grid[y][x] = 'F';
