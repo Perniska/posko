@@ -9,9 +9,7 @@
 typedef struct {
     int newsockfd;
     char username[256];
-    int n;
-    char buffer[256];
-    int score;
+    int id;  // Unique ID for the client
 } ARGUMENTY;
 
 int connectedClients = 0;  // Counter for connected clients
@@ -21,19 +19,9 @@ void *handleClient(void* arg) {
     ARGUMENTY *threadArgs = (ARGUMENTY *)arg;
     int newsockfd = threadArgs->newsockfd;
     char *username = threadArgs->username;
-    threadArgs->score = 0;
+    int clientID = threadArgs->id;
 
-    printf("Client connected with username: %s\n", username);
-
-    // Read the score from the client
-    threadArgs->n = read(newsockfd, &(threadArgs->score), sizeof(threadArgs->score));
-    if (threadArgs->n < 0) {
-        perror("Error reading score from socket");
-        close(newsockfd);
-        free(arg);
-        pthread_exit(NULL);
-    }
-    printf("Skóre používateľa %s je: %d\n", username, threadArgs->score);
+    printf("Client connected with username: %s, ID: %d\n", username, clientID);
 
     // Increment the connected clients counter
     pthread_mutex_lock(&counterMutex);
@@ -45,6 +33,8 @@ void *handleClient(void* arg) {
         pthread_mutex_lock(&counterMutex);
         if (connectedClients == 2) {
             pthread_mutex_unlock(&counterMutex);
+            // Signal both clients that the game can start
+            write(newsockfd, "START_GAME", strlen("START_GAME") + 1);
             break;  // Break the loop when 2 clients are connected
         }
         pthread_mutex_unlock(&counterMutex);
@@ -52,10 +42,6 @@ void *handleClient(void* arg) {
     }
 
     // Continue with the game or any other logic...
-
-
-    // Free the memory allocated for the threadArgs
-    free(threadArgs);
 
     // Close the socket for this client
     close(newsockfd);
@@ -68,8 +54,8 @@ int main(int argc, char *argv[]) {
     socklen_t cli_len;
     struct sockaddr_in serv_addr, cli_addr;
     char username[256];
-    int n;
     char buffer[256];
+    int n;
 
     printf("Server: The number of provided arguments is correct\n");
     fflush(stdout);
@@ -126,22 +112,24 @@ int main(int argc, char *argv[]) {
             continue;
         }
 
-        // Read the username from the client
-        bzero(username, sizeof(username));
-        n = read(newsockfd, username, sizeof(username) - 1);
+        // Read the username and ID from the client
+        bzero(buffer, sizeof(buffer));
+        n = read(newsockfd, buffer, sizeof(buffer) - 1);
         if (n < 0) {
-            perror("Error reading username from socket");
+            perror("Error reading username and ID from socket");
             close(newsockfd);
             free(arg);
             continue;  // Continue to the next iteration
         }
-        printf("Server: reading username from client %s:\n", username);
+
+        // Parse the received message to extract username and ID
+        sscanf(buffer, "%255[^|]|%d", username, &(arg->id));
+        printf("Server: received username from client %s, ID: %d\n", username, arg->id);
         fflush(stdout);
 
         // Populate the ARGUMENTY structure
         arg->newsockfd = newsockfd;
         strncpy(arg->username, username, sizeof(arg->username));
-        strncpy(arg->buffer, buffer, sizeof(arg->buffer));
 
         // Create a new thread to handle the client
         pthread_t vlakno;
