@@ -32,3 +32,4 @@ add_executable(server server.c hra.c
 )
 
 target_link_libraries(server pthread)
+target_link_libraries(client pthread)

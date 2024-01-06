@@ -11,34 +11,48 @@ typedef struct {
     char username[256];
     int n;
     char buffer[256];
+    int score;
 } ARGUMENTY;
 
-void *handleClient(void* arg) {
-    printf("Server: som vo vlakne\n");
-    fflush(stdout);
+int connectedClients = 0;  // Counter for connected clients
+pthread_mutex_t counterMutex = PTHREAD_MUTEX_INITIALIZER;  // Mutex to protect counter
 
+void *handleClient(void* arg) {
     ARGUMENTY *threadArgs = (ARGUMENTY *)arg;
     int newsockfd = threadArgs->newsockfd;
     char *username = threadArgs->username;
-    printf("Server: zapisal som potrebne informacie\n");
-    fflush(stdout);
-    //vynulovany buffer
-    bzero(threadArgs->buffer,256);
-    //precitam a ulozim informcie do buffra - max 255 bajtov
-    threadArgs->n = read(newsockfd, threadArgs->buffer, 255);
+    threadArgs->score = 0;
 
-    // Your existing code for handling a single client
-    printf("Here is the message: %s\n", threadArgs->buffer);
-
-    const char* msg = "I got your message";
-    //mag + 1 ,pretoze je tu este /0 na ukoncenie
-    threadArgs->n = write(newsockfd, msg, strlen(msg)+1);
-    if (threadArgs->n < 0)
-    {
-        perror("Error writing to socket");
-    }
-    // For example, printing the username and a message
     printf("Client connected with username: %s\n", username);
+
+    // Read the score from the client
+    threadArgs->n = read(newsockfd, &(threadArgs->score), sizeof(threadArgs->score));
+    if (threadArgs->n < 0) {
+        perror("Error reading score from socket");
+        close(newsockfd);
+        free(arg);
+        pthread_exit(NULL);
+    }
+    printf("Skóre používateľa %s je: %d\n", username, threadArgs->score);
+
+    // Increment the connected clients counter
+    pthread_mutex_lock(&counterMutex);
+    connectedClients++;
+    pthread_mutex_unlock(&counterMutex);
+
+    // Wait for all clients to connect
+    while (1) {
+        pthread_mutex_lock(&counterMutex);
+        if (connectedClients == 2) {
+            pthread_mutex_unlock(&counterMutex);
+            break;  // Break the loop when 2 clients are connected
+        }
+        pthread_mutex_unlock(&counterMutex);
+        sleep(1);  // Sleep to avoid busy-waiting
+    }
+
+    // Continue with the game or any other logic...
+
 
     // Free the memory allocated for the threadArgs
     free(threadArgs);
@@ -57,16 +71,15 @@ int main(int argc, char *argv[]) {
     int n;
     char buffer[256];
 
-    printf("Server: pocet zadanych argumentov je spravny\n");
+    printf("Server: The number of provided arguments is correct\n");
     fflush(stdout);
 
     if (argc < 2) {
-        fprintf(stderr,"usage %s port\n", argv[0]);
+        fprintf(stderr, "usage %s port\n", argv[0]);
         return 1;
     }
 
     // Initialize socket structure
-
     bzero((char*)&serv_addr, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_addr.s_addr = INADDR_ANY;
@@ -80,7 +93,7 @@ int main(int argc, char *argv[]) {
         perror("Error creating socket");
         return 1;
     }
-    printf("Server: vytvoril som socket\n");
+    printf("Server: created the socket\n");
     fflush(stdout);
 
     // Bind the socket
@@ -88,23 +101,22 @@ int main(int argc, char *argv[]) {
         perror("Error binding socket address");
         return 2;
     }
-    printf("Server: bindol som socket\n");
+    printf("Server: bound the socket\n");
     fflush(stdout);
 
     // Listen for incoming connections
-    listen(sockfd, 5);
+    listen(sockfd, 2);
     cli_len = sizeof(cli_addr);
 
     // Accept and handle incoming connections in an infinite loop
     while (1) {
         // Accept a connection
-
         newsockfd = accept(sockfd, (struct sockaddr*)&cli_addr, &cli_len);
         if (newsockfd < 0) {
             perror("ERROR on accept");
             continue;  // Continue to the next iteration
         }
-        printf("Server: prijimam pripojenie klienta\n");
+        printf("Server: accepting connection from client\n");
         fflush(stdout);
 
         ARGUMENTY *arg = (ARGUMENTY *)malloc(sizeof(ARGUMENTY));
@@ -115,17 +127,15 @@ int main(int argc, char *argv[]) {
         }
 
         // Read the username from the client
-        // char username[256];
         bzero(username, sizeof(username));
-
-        n = read(newsockfd, username, sizeof(username)-1);
+        n = read(newsockfd, username, sizeof(username) - 1);
         if (n < 0) {
             perror("Error reading username from socket");
             close(newsockfd);
             free(arg);
             continue;  // Continue to the next iteration
         }
-        printf("Server: citam username klienta %s : \n" ,username );
+        printf("Server: reading username from client %s:\n", username);
         fflush(stdout);
 
         // Populate the ARGUMENTY structure
@@ -134,9 +144,6 @@ int main(int argc, char *argv[]) {
         strncpy(arg->buffer, buffer, sizeof(arg->buffer));
 
         // Create a new thread to handle the client
-        printf("Server: idem vytvorit vlakno \n" );
-        fflush(stdout);
-
         pthread_t vlakno;
         if (pthread_create(&vlakno, NULL, handleClient, (void *)arg) != 0) {
             perror("Error creating thread");
@@ -147,8 +154,6 @@ int main(int argc, char *argv[]) {
 
         // Detach the thread to allow it to clean up after completion
         pthread_detach(vlakno);
-
-
     }
 
     // Close the main socket
@@ -156,4 +161,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-

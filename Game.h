@@ -15,5 +15,6 @@ typedef struct {
 
 void initializeGame(Game* game, int width, int height);
 void runGame(Game* game);
+int getScore(Game* game);
 
 #endif // GAME_H

@@ -1,1 +1,1 @@
-/usr/bin/cc -g CMakeFiles/server.dir/server.c.o CMakeFiles/server.dir/hra.c.o CMakeFiles/server.dir/Game.c.o CMakeFiles/server.dir/Snake.c.o CMakeFiles/server.dir/Position.c.o CMakeFiles/server.dir/Food.c.o CMakeFiles/server.dir/Board.c.o -o server 
+/usr/bin/cc -g CMakeFiles/server.dir/server.c.o CMakeFiles/server.dir/hra.c.o CMakeFiles/server.dir/Game.c.o CMakeFiles/server.dir/Snake.c.o CMakeFiles/server.dir/Position.c.o CMakeFiles/server.dir/Food.c.o CMakeFiles/server.dir/Board.c.o -o server  -lpthread 

@@ -74,3 +74,7 @@ void runGame(Game* game) {
     destroyBoard(&(game->board));
 }
 
+int getScore(Game* game){
+    return game->score;
+}
+
