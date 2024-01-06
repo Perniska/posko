@@ -10,6 +10,9 @@
 
 int generateUniqueID() {
     return rand(); // For simplicity, using a random number as a unique ID
+
+
+
 }
 
 int waitForSecondPlayer(int sockfd) {

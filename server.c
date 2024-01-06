@@ -10,6 +10,9 @@ typedef struct {
     int newsockfd;
     char username[256];
     int id;  // Unique ID for the client
+
+
+
 } ARGUMENTY;
 
 int connectedClients = 0;  // Counter for connected clients
