@@ -1,11 +1,11 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/server.dir/Board.c.o"
-  "CMakeFiles/server.dir/Food.c.o"
-  "CMakeFiles/server.dir/Game.c.o"
-  "CMakeFiles/server.dir/Position.c.o"
-  "CMakeFiles/server.dir/Snake.c.o"
-  "CMakeFiles/server.dir/hra.c.o"
-  "CMakeFiles/server.dir/server.c.o"
+  "CMakeFiles/server.dir/src/Board.c.o"
+  "CMakeFiles/server.dir/src/Food.c.o"
+  "CMakeFiles/server.dir/src/Game.c.o"
+  "CMakeFiles/server.dir/src/Position.c.o"
+  "CMakeFiles/server.dir/src/Snake.c.o"
+  "CMakeFiles/server.dir/src/hra.c.o"
+  "CMakeFiles/server.dir/src/server.c.o"
   "server"
   "server.pdb"
 )
