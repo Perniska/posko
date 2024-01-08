@@ -6,17 +6,33 @@
 #include <unistd.h>
 #include <pthread.h>
 
+
+
 typedef struct {
     int newsockfd;
     char username[256];
     int id;  // Unique ID for the client
-
-
-
 } ARGUMENTY;
 
 int connectedClients = 0;  // Counter for connected clients
 pthread_mutex_t counterMutex = PTHREAD_MUTEX_INITIALIZER;  // Mutex to protect counter
+
+char* getTime() {
+    time_t currentTime;
+    struct tm *localTime;
+
+    time(&currentTime);
+    localTime = localtime(&currentTime);
+
+    // Allocate memory for the time string
+    char *timeString = (char *)malloc(9); // HH:MM:SS\0
+
+    // Format the time string
+    sprintf(timeString, "%02d:%02d:%02d",
+            localTime->tm_hour, localTime->tm_min, localTime->tm_sec);
+
+    return timeString;
+}
 
 void *handleClient(void* arg) {
     ARGUMENTY *threadArgs = (ARGUMENTY *)arg;
@@ -24,7 +40,8 @@ void *handleClient(void* arg) {
     char *username = threadArgs->username;
     int clientID = threadArgs->id;
 
-    printf("Client connected with username: %s, ID: %d\n", username, clientID);
+    printf("Server thread : Client connected with username: %s, ID: %d\n", username, clientID);
+    fflush(stdout);
 
     // Increment the connected clients counter
     pthread_mutex_lock(&counterMutex);
@@ -44,7 +61,26 @@ void *handleClient(void* arg) {
         sleep(1);  // Sleep to avoid busy-waiting
     }
 
-    // Continue with the game or any other logic...
+    char buffer[256];
+    ssize_t n = read(newsockfd, buffer, sizeof(buffer));
+    if (n < 0) {
+        perror("Error reading from socket");
+        exit(1);
+    } else if (n == 0) {
+        // Print the message
+        printf("Client disconnected: %s, ID: %d at: %s\n", username, clientID, getTime());
+        fflush(stdout);
+
+        free(arg);
+
+    } else {
+        buffer[n] = '\0';  // Null-terminate the received data
+        printf("Received data from client: %s\n", buffer);
+        // Parse the received data as needed
+        // Free the allocated memory
+        free(arg);
+    }
+
 
     // Close the socket for this client
     close(newsockfd);
@@ -56,9 +92,10 @@ int main(int argc, char *argv[]) {
     int sockfd, newsockfd;
     socklen_t cli_len;
     struct sockaddr_in serv_addr, cli_addr;
-    char username[256];
     char buffer[256];
     int n;
+
+
 
     printf("Server: The number of provided arguments is correct\n");
     fflush(stdout);
@@ -94,7 +131,7 @@ int main(int argc, char *argv[]) {
     fflush(stdout);
 
     // Listen for incoming connections
-    listen(sockfd, 2);
+    listen(sockfd, 5);
     cli_len = sizeof(cli_addr);
 
     // Accept and handle incoming connections in an infinite loop
@@ -114,7 +151,6 @@ int main(int argc, char *argv[]) {
             close(newsockfd);
             continue;
         }
-
         // Read the username and ID from the client
         bzero(buffer, sizeof(buffer));
         n = read(newsockfd, buffer, sizeof(buffer) - 1);
@@ -126,13 +162,24 @@ int main(int argc, char *argv[]) {
         }
 
         // Parse the received message to extract username and ID
-        sscanf(buffer, "%255[^|]|%d", username, &(arg->id));
-        printf("Server: received username from client %s, ID: %d\n", username, arg->id);
+        if (sscanf(buffer, "%255[^,], ID: %d", arg->username, &(arg->id)) != 2) {
+            fprintf(stderr, "Error parsing username and ID\n");
+            close(newsockfd);
+            free(arg);
+            continue;  // Continue to the next iteration
+        }
+
+        // Get the time string
+        char *timeString = getTime();
+
+        printf("Server: received username from client %s, ID: %d   at : %s \n", arg->username, arg->id, timeString);
         fflush(stdout);
 
+        // Free the allocated memory
+        free(timeString);
+        // free(arg);
         // Populate the ARGUMENTY structure
         arg->newsockfd = newsockfd;
-        strncpy(arg->username, username, sizeof(arg->username));
 
         // Create a new thread to handle the client
         pthread_t vlakno;
