@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/hra.dir/hra.c.o CMakeFiles/hra.dir/Game.c.o CMakeFiles/hra.dir/Snake.c.o CMakeFiles/hra.dir/Position.c.o CMakeFiles/hra.dir/Food.c.o CMakeFiles/hra.dir/Board.c.o -o hra 

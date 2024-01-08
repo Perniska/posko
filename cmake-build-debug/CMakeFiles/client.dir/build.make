@@ -62,10 +62,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /tmp/tmp.baNCNu1QWG
+CMAKE_SOURCE_DIR = /tmp/tmp.kld56GFG1D
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /tmp/tmp.baNCNu1QWG/cmake-build-debug
+CMAKE_BINARY_DIR = /tmp/tmp.kld56GFG1D/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/client.dir/depend.make
@@ -76,120 +76,120 @@ include CMakeFiles/client.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/client.dir/flags.make
 
-CMakeFiles/client.dir/client.c.o: CMakeFiles/client.dir/flags.make
-CMakeFiles/client.dir/client.c.o: ../client.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/client.dir/client.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client.dir/client.c.o -c /tmp/tmp.baNCNu1QWG/client.c
+CMakeFiles/client.dir/src/client.c.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/client.c.o: ../src/client.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/client.dir/src/client.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client.dir/src/client.c.o -c /tmp/tmp.kld56GFG1D/src/client.c
 
-CMakeFiles/client.dir/client.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client.dir/client.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.baNCNu1QWG/client.c > CMakeFiles/client.dir/client.c.i
+CMakeFiles/client.dir/src/client.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client.dir/src/client.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.kld56GFG1D/src/client.c > CMakeFiles/client.dir/src/client.c.i
 
-CMakeFiles/client.dir/client.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client.dir/client.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.baNCNu1QWG/client.c -o CMakeFiles/client.dir/client.c.s
+CMakeFiles/client.dir/src/client.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client.dir/src/client.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.kld56GFG1D/src/client.c -o CMakeFiles/client.dir/src/client.c.s
 
-CMakeFiles/client.dir/hra.c.o: CMakeFiles/client.dir/flags.make
-CMakeFiles/client.dir/hra.c.o: ../hra.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/client.dir/hra.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client.dir/hra.c.o -c /tmp/tmp.baNCNu1QWG/hra.c
+CMakeFiles/client.dir/src/hra.c.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/hra.c.o: ../src/hra.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/client.dir/src/hra.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client.dir/src/hra.c.o -c /tmp/tmp.kld56GFG1D/src/hra.c
 
-CMakeFiles/client.dir/hra.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client.dir/hra.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.baNCNu1QWG/hra.c > CMakeFiles/client.dir/hra.c.i
+CMakeFiles/client.dir/src/hra.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client.dir/src/hra.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.kld56GFG1D/src/hra.c > CMakeFiles/client.dir/src/hra.c.i
 
-CMakeFiles/client.dir/hra.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client.dir/hra.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.baNCNu1QWG/hra.c -o CMakeFiles/client.dir/hra.c.s
+CMakeFiles/client.dir/src/hra.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client.dir/src/hra.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.kld56GFG1D/src/hra.c -o CMakeFiles/client.dir/src/hra.c.s
 
-CMakeFiles/client.dir/Game.c.o: CMakeFiles/client.dir/flags.make
-CMakeFiles/client.dir/Game.c.o: ../Game.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/client.dir/Game.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client.dir/Game.c.o -c /tmp/tmp.baNCNu1QWG/Game.c
+CMakeFiles/client.dir/src/Game.c.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/Game.c.o: ../src/Game.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/client.dir/src/Game.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client.dir/src/Game.c.o -c /tmp/tmp.kld56GFG1D/src/Game.c
 
-CMakeFiles/client.dir/Game.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client.dir/Game.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.baNCNu1QWG/Game.c > CMakeFiles/client.dir/Game.c.i
+CMakeFiles/client.dir/src/Game.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client.dir/src/Game.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.kld56GFG1D/src/Game.c > CMakeFiles/client.dir/src/Game.c.i
 
-CMakeFiles/client.dir/Game.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client.dir/Game.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.baNCNu1QWG/Game.c -o CMakeFiles/client.dir/Game.c.s
+CMakeFiles/client.dir/src/Game.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client.dir/src/Game.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.kld56GFG1D/src/Game.c -o CMakeFiles/client.dir/src/Game.c.s
 
-CMakeFiles/client.dir/Snake.c.o: CMakeFiles/client.dir/flags.make
-CMakeFiles/client.dir/Snake.c.o: ../Snake.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/client.dir/Snake.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client.dir/Snake.c.o -c /tmp/tmp.baNCNu1QWG/Snake.c
+CMakeFiles/client.dir/src/Snake.c.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/Snake.c.o: ../src/Snake.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/client.dir/src/Snake.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client.dir/src/Snake.c.o -c /tmp/tmp.kld56GFG1D/src/Snake.c
 
-CMakeFiles/client.dir/Snake.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client.dir/Snake.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.baNCNu1QWG/Snake.c > CMakeFiles/client.dir/Snake.c.i
+CMakeFiles/client.dir/src/Snake.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client.dir/src/Snake.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.kld56GFG1D/src/Snake.c > CMakeFiles/client.dir/src/Snake.c.i
 
-CMakeFiles/client.dir/Snake.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client.dir/Snake.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.baNCNu1QWG/Snake.c -o CMakeFiles/client.dir/Snake.c.s
+CMakeFiles/client.dir/src/Snake.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client.dir/src/Snake.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.kld56GFG1D/src/Snake.c -o CMakeFiles/client.dir/src/Snake.c.s
 
-CMakeFiles/client.dir/Position.c.o: CMakeFiles/client.dir/flags.make
-CMakeFiles/client.dir/Position.c.o: ../Position.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/client.dir/Position.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client.dir/Position.c.o -c /tmp/tmp.baNCNu1QWG/Position.c
+CMakeFiles/client.dir/src/Position.c.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/Position.c.o: ../src/Position.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/client.dir/src/Position.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client.dir/src/Position.c.o -c /tmp/tmp.kld56GFG1D/src/Position.c
 
-CMakeFiles/client.dir/Position.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client.dir/Position.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.baNCNu1QWG/Position.c > CMakeFiles/client.dir/Position.c.i
+CMakeFiles/client.dir/src/Position.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client.dir/src/Position.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.kld56GFG1D/src/Position.c > CMakeFiles/client.dir/src/Position.c.i
 
-CMakeFiles/client.dir/Position.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client.dir/Position.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.baNCNu1QWG/Position.c -o CMakeFiles/client.dir/Position.c.s
+CMakeFiles/client.dir/src/Position.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client.dir/src/Position.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.kld56GFG1D/src/Position.c -o CMakeFiles/client.dir/src/Position.c.s
 
-CMakeFiles/client.dir/Food.c.o: CMakeFiles/client.dir/flags.make
-CMakeFiles/client.dir/Food.c.o: ../Food.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/client.dir/Food.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client.dir/Food.c.o -c /tmp/tmp.baNCNu1QWG/Food.c
+CMakeFiles/client.dir/src/Food.c.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/Food.c.o: ../src/Food.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/client.dir/src/Food.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client.dir/src/Food.c.o -c /tmp/tmp.kld56GFG1D/src/Food.c
 
-CMakeFiles/client.dir/Food.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client.dir/Food.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.baNCNu1QWG/Food.c > CMakeFiles/client.dir/Food.c.i
+CMakeFiles/client.dir/src/Food.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client.dir/src/Food.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.kld56GFG1D/src/Food.c > CMakeFiles/client.dir/src/Food.c.i
 
-CMakeFiles/client.dir/Food.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client.dir/Food.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.baNCNu1QWG/Food.c -o CMakeFiles/client.dir/Food.c.s
+CMakeFiles/client.dir/src/Food.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client.dir/src/Food.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.kld56GFG1D/src/Food.c -o CMakeFiles/client.dir/src/Food.c.s
 
-CMakeFiles/client.dir/Board.c.o: CMakeFiles/client.dir/flags.make
-CMakeFiles/client.dir/Board.c.o: ../Board.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/client.dir/Board.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client.dir/Board.c.o -c /tmp/tmp.baNCNu1QWG/Board.c
+CMakeFiles/client.dir/src/Board.c.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/Board.c.o: ../src/Board.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/client.dir/src/Board.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client.dir/src/Board.c.o -c /tmp/tmp.kld56GFG1D/src/Board.c
 
-CMakeFiles/client.dir/Board.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client.dir/Board.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.baNCNu1QWG/Board.c > CMakeFiles/client.dir/Board.c.i
+CMakeFiles/client.dir/src/Board.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client.dir/src/Board.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.kld56GFG1D/src/Board.c > CMakeFiles/client.dir/src/Board.c.i
 
-CMakeFiles/client.dir/Board.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client.dir/Board.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.baNCNu1QWG/Board.c -o CMakeFiles/client.dir/Board.c.s
+CMakeFiles/client.dir/src/Board.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client.dir/src/Board.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.kld56GFG1D/src/Board.c -o CMakeFiles/client.dir/src/Board.c.s
 
 # Object files for target client
 client_OBJECTS = \
-"CMakeFiles/client.dir/client.c.o" \
-"CMakeFiles/client.dir/hra.c.o" \
-"CMakeFiles/client.dir/Game.c.o" \
-"CMakeFiles/client.dir/Snake.c.o" \
-"CMakeFiles/client.dir/Position.c.o" \
-"CMakeFiles/client.dir/Food.c.o" \
-"CMakeFiles/client.dir/Board.c.o"
+"CMakeFiles/client.dir/src/client.c.o" \
+"CMakeFiles/client.dir/src/hra.c.o" \
+"CMakeFiles/client.dir/src/Game.c.o" \
+"CMakeFiles/client.dir/src/Snake.c.o" \
+"CMakeFiles/client.dir/src/Position.c.o" \
+"CMakeFiles/client.dir/src/Food.c.o" \
+"CMakeFiles/client.dir/src/Board.c.o"
 
 # External object files for target client
 client_EXTERNAL_OBJECTS =
 
-client: CMakeFiles/client.dir/client.c.o
-client: CMakeFiles/client.dir/hra.c.o
-client: CMakeFiles/client.dir/Game.c.o
-client: CMakeFiles/client.dir/Snake.c.o
-client: CMakeFiles/client.dir/Position.c.o
-client: CMakeFiles/client.dir/Food.c.o
-client: CMakeFiles/client.dir/Board.c.o
+client: CMakeFiles/client.dir/src/client.c.o
+client: CMakeFiles/client.dir/src/hra.c.o
+client: CMakeFiles/client.dir/src/Game.c.o
+client: CMakeFiles/client.dir/src/Snake.c.o
+client: CMakeFiles/client.dir/src/Position.c.o
+client: CMakeFiles/client.dir/src/Food.c.o
+client: CMakeFiles/client.dir/src/Board.c.o
 client: CMakeFiles/client.dir/build.make
 client: CMakeFiles/client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -202,6 +202,6 @@ CMakeFiles/client.dir/clean:
 .PHONY : CMakeFiles/client.dir/clean
 
 CMakeFiles/client.dir/depend:
-	cd /tmp/tmp.baNCNu1QWG/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /tmp/tmp.baNCNu1QWG /tmp/tmp.baNCNu1QWG /tmp/tmp.baNCNu1QWG/cmake-build-debug /tmp/tmp.baNCNu1QWG/cmake-build-debug /tmp/tmp.baNCNu1QWG/cmake-build-debug/CMakeFiles/client.dir/DependInfo.cmake --color=$(COLOR)
+	cd /tmp/tmp.kld56GFG1D/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /tmp/tmp.kld56GFG1D /tmp/tmp.kld56GFG1D /tmp/tmp.kld56GFG1D/cmake-build-debug /tmp/tmp.kld56GFG1D/cmake-build-debug /tmp/tmp.kld56GFG1D/cmake-build-debug/CMakeFiles/client.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/client.dir/depend
 
