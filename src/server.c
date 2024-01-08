@@ -11,11 +11,11 @@
 typedef struct {
     int newsockfd;
     char username[256];
-    int id;  // Unique ID for the client
+    int id;
 } ARGUMENTY;
 
-int connectedClients = 0;  // Counter for connected clients
-pthread_mutex_t counterMutex = PTHREAD_MUTEX_INITIALIZER;  // Mutex to protect counter
+int connectedClients = 0;  // Pocitadlo pripojenych klientov
+pthread_mutex_t counterMutex = PTHREAD_MUTEX_INITIALIZER;  // Mutex pre pocitadlo
 
 char* getTime() {
     time_t currentTime;
@@ -24,10 +24,10 @@ char* getTime() {
     time(&currentTime);
     localTime = localtime(&currentTime);
 
-    // Allocate memory for the time string
+    // Alokovanie pamate pre timeString
     char *timeString = (char *)malloc(9); // HH:MM:SS\0
 
-    // Format the time string
+    // Formatovanie
     sprintf(timeString, "%02d:%02d:%02d",
             localTime->tm_hour, localTime->tm_min, localTime->tm_sec);
 
@@ -43,22 +43,22 @@ void *handleClient(void* arg) {
     printf("Server thread : Client connected with username: %s, ID: %d\n", username, clientID);
     fflush(stdout);
 
-    // Increment the connected clients counter
+    // inkrementovanie pocitadla pripojenych klientov
     pthread_mutex_lock(&counterMutex);
     connectedClients++;
     pthread_mutex_unlock(&counterMutex);
 
-    // Wait for all clients to connect
+    // Cakanie kym sa vsetci klienti pripoja
     while (1) {
         pthread_mutex_lock(&counterMutex);
         if (connectedClients == 2) {
             pthread_mutex_unlock(&counterMutex);
-            // Signal both clients that the game can start
+            // Signal ze sa pripojili vsetci klienti
             write(newsockfd, "START_GAME", strlen("START_GAME") + 1);
-            break;  // Break the loop when 2 clients are connected
+            break;
         }
         pthread_mutex_unlock(&counterMutex);
-        sleep(1);  // Sleep to avoid busy-waiting
+        sleep(1);
     }
 
     char buffer[256];
@@ -67,22 +67,19 @@ void *handleClient(void* arg) {
         perror("Error reading from socket");
         exit(1);
     } else if (n == 0) {
-        // Print the message
         printf("Client disconnected: %s, ID: %d at: %s\n", username, clientID, getTime());
         fflush(stdout);
 
         free(arg);
 
     } else {
-        buffer[n] = '\0';  // Null-terminate the received data
+        buffer[n] = '\0';
         printf("Received data from client: %s\n", buffer);
-        // Parse the received data as needed
-        // Free the allocated memory
         free(arg);
     }
 
 
-    // Close the socket for this client
+    // Zatvorenie socketu
     close(newsockfd);
 
     pthread_exit(NULL);
@@ -105,16 +102,16 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // Initialize socket structure
+    //Inicializovanie struktury socketu
     bzero((char*)&serv_addr, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_addr.s_addr = INADDR_ANY;
     serv_addr.sin_port = htons(atoi(argv[1]));
 
-    // Create socket
+    // Vytvorenie socketu
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
-    // Check if socket creation was successful
+    // Kontrola ci sa socket uspesne vytvoril
     if (sockfd < 0) {
         perror("Error creating socket");
         return 1;
@@ -122,7 +119,7 @@ int main(int argc, char *argv[]) {
     printf("Server: created the socket\n");
     fflush(stdout);
 
-    // Bind the socket
+    // bindovanie socketu
     if (bind(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0) {
         perror("Error binding socket address");
         return 2;
@@ -130,17 +127,17 @@ int main(int argc, char *argv[]) {
     printf("Server: bound the socket\n");
     fflush(stdout);
 
-    // Listen for incoming connections
+    // pocuvanie prichadzajucich pripojeni
     listen(sockfd, 5);
     cli_len = sizeof(cli_addr);
 
-    // Accept and handle incoming connections in an infinite loop
+    // Spravovanie prichadzajucich spojeni
     while (1) {
-        // Accept a connection
+        // Akceptovanie spojenia
         newsockfd = accept(sockfd, (struct sockaddr*)&cli_addr, &cli_len);
         if (newsockfd < 0) {
             perror("ERROR on accept");
-            continue;  // Continue to the next iteration
+            continue;  // preskocenie do dalsej iteracie
         }
         printf("Server: accepting connection from client\n");
         fflush(stdout);
@@ -151,50 +148,49 @@ int main(int argc, char *argv[]) {
             close(newsockfd);
             continue;
         }
-        // Read the username and ID from the client
+        // Nacitanie username a id z klienta
         bzero(buffer, sizeof(buffer));
         n = read(newsockfd, buffer, sizeof(buffer) - 1);
         if (n < 0) {
             perror("Error reading username and ID from socket");
             close(newsockfd);
             free(arg);
-            continue;  // Continue to the next iteration
+            continue;  // preskocenie do dalsej iteracie
         }
 
-        // Parse the received message to extract username and ID
+        // parsovanie prijatej spravy na ziskanie mena a id
         if (sscanf(buffer, "%255[^,], ID: %d", arg->username, &(arg->id)) != 2) {
             fprintf(stderr, "Error parsing username and ID\n");
             close(newsockfd);
             free(arg);
-            continue;  // Continue to the next iteration
+            continue;  // preskocenie do dalsej iteracie
         }
 
-        // Get the time string
+
         char *timeString = getTime();
 
         printf("Server: received username from client %s, ID: %d   at : %s \n", arg->username, arg->id, timeString);
         fflush(stdout);
 
-        // Free the allocated memory
+        // uvolnenie alokovanej pamate
         free(timeString);
         // free(arg);
-        // Populate the ARGUMENTY structure
         arg->newsockfd = newsockfd;
 
-        // Create a new thread to handle the client
+        // vytvorenie noveho vlakna pre  spravovanie klienta
         pthread_t vlakno;
         if (pthread_create(&vlakno, NULL, handleClient, (void *)arg) != 0) {
             perror("Error creating thread");
             close(newsockfd);
             free(arg);
-            continue;  // Continue to the next iteration
+            continue;
         }
 
-        // Detach the thread to allow it to clean up after completion
+        // odpojenie vlakna
         pthread_detach(vlakno);
     }
 
-    // Close the main socket
+    // uzatvorenie socketu
     close(sockfd);
 
     return 0;

@@ -9,7 +9,7 @@
 #include "Game.h"
 
 int generateUniqueID() {
-    // Using a combination of timestamp and random number for a more unique ID
+    // vytvorenie unikatneho ID pomocou timestampu a nahodneho cisla
     int id = (int)(time(NULL) * 100) + rand() ;
     return id;
 }
@@ -18,28 +18,25 @@ int waitForSecondPlayer(int sockfd) {
     char buffer[256];
     int n;
 
-    // Wait for the signal from the server indicating the second player has connected
+    // Cakanie na signal zo serveru ze sa pripojil druhy hrac
     while (1) {
         bzero(buffer, sizeof(buffer));
         n = read(sockfd, buffer, sizeof(buffer) - 1);
         if (n < 0) {
             perror("Error reading from socket");
-            return 1; // Handle error
+            return 1;
         }
 
-        // Check for the signal
+        // kontrola signalu
         if (strcmp(buffer, "START_GAME") == 0) {
             printf("Both players connected. Starting the game!\n");
             break;
         }
 
-        // Optionally, you can implement a timeout mechanism here
-
-        // Sleep for a short interval to avoid busy-waiting
-        usleep(100000); // 100 milliseconds
+        usleep(100000);
     }
 
-    return 0; // Success
+    return 0;
 }
 
 int main(int argc, char *argv[]) {
@@ -88,42 +85,39 @@ int main(int argc, char *argv[]) {
     char *user = getenv("USER");
     bzero(buffer, 256);
     int id = generateUniqueID();
-    // Combine the username and unique ID into a single string with the expected format
+    // kombinacia username a ID do stringu z urcenym formatom
     snprintf(buffer, sizeof(buffer), "%s, ID: %d", user, id);
     n = write(sockfd, buffer, strlen(buffer));
     if (n < 0) {
         perror("Error writing username and ID to socket");
         return 5;
     }
-      // Wait for the second player to connect
+      // Cakanie na druheho hraca
     if (waitForSecondPlayer(sockfd) != 0) {
-        // Handle error
+
         return 7;
     }
 
     printf("Client: Welcome, %s! The game is starting now.\n", user);
 
 
+    //spustenie hry
     srand((unsigned)time(NULL)); // Seed pre generátor náhodných čísel
 
     Game game;
-    initializeGame(&game, 10, 10);  // Predpokladám, že ste vytvorili vlastnú funkciu initializeGame
+    initializeGame(&game, 10, 10);
 
     // Spustenie hry
-    runGame(&game);  // Predpokladám, že ste vytvorili vlastnú funkciu runGame
+    runGame(&game);
 
     bzero(buffer, 256);
 
-    // Combine the username and unique ID into a single string with the expected format
     snprintf(buffer, sizeof(buffer), "%s, ID: %d  , score: %d", user, id ,getScore(&game));
     n = write(sockfd, buffer, strlen(buffer));
     if (n < 0) {
         perror("Error writing username ,ID and score to socket");
         return 5;
     }
-
-
-    // Continue with the rest of your game logic...
 
     // uzavrenie socketu
     close(sockfd);
