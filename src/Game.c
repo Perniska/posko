@@ -50,6 +50,10 @@ void runGame(Game* game) {
             getSnakePosition(&(game->snake)).y == game->food.position.y) {
             growSnake(&(game->snake));
             generateNewFoodPosition(&(game->food), game->board.width, game->board.height);
+            //v pripade ze sa jedlo vygenerovalo na pozicii hada, vygeneruje sa znova
+            if (checkFoodGeneration (&(game->snake), &(game->food))) {
+                generateNewFoodPosition(&(game->food), game->board.width, game->board.height);
+            }
             game->score++;
         }
 

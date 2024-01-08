@@ -113,6 +113,15 @@ int checkCollision(const Snake* snake) {
     }
     return 0; // False, žiadna kolízia
 }
+int checkFoodGeneration(const Snake* snake, const Food* food) {
+    //Kontroluje ci sa jedlo nevygenrovalo na hadovi
+    for (int i = 0; i < snake->length; ++i) {
+        if (snake->body[i].x == getFoodPosition(food).x && snake->body[0].y == getFoodPosition(food).y) {
+            return 1; // True, jedlo sa vygenerovalo na zlej pozicii
+        }
+    }
+    return 0; // False, jedlo sa vygenerovalo spravne
+}
 
 void updateDirection(Snake* snake, char key) {
     //nastavenie smeru hada na základe vstupu od používateľa

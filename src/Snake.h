@@ -5,6 +5,7 @@
 #include "Position.h"
 #include "Direction.h"
 #include <string.h>
+#include "Food.h"
 
 
 
@@ -22,6 +23,7 @@ void growSnake(Snake* snake);
 int checkCollision(const Snake* snake);
 void updateDirection(Snake* snake, char key);
 Position getSnakePosition(const Snake* snake);
+int checkFoodGeneration(const Snake* snake, const Food* food);
 Position* getSnakeBody(const Snake* snake);
 void destroySnake(Snake* snake);
 

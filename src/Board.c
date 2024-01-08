@@ -55,11 +55,12 @@ void updateSnakePosition(Board* board, const Position* snakeBody, int snakeLengt
     for (i = 0; i < snakeLength; ++i) {
         x = getPositionX(&snakeBody[i]) % board->width;
         y = getPositionY(&snakeBody[i]) % board->height;
-        if(i==0) {
-            board->grid[y][x] = 'H';
-        }
-        else {
-            board->grid[y][x] = 'S';
+        if (x >= 0 && x < board->width && y >= 0 && y < board->height) {
+            if (i == 0) {
+                board->grid[y][x] = 'H';
+            } else {
+                board->grid[y][x] = 'S';
+            }
         }
     }
 }
